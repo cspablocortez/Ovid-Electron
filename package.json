@@ -1,0 +1,15 @@
+{
+  "name": "ovid-electron",
+  "version": "1.0.0",
+  "description": "An Electron version of Ovid Writer",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pablo Enoc Cortez",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "electron": "^27.0.4"
+  }
+}
