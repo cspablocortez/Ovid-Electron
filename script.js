@@ -1,55 +1,17 @@
 const wordCountCell = document.getElementById('word_count');
 const documentTitle = document.getElementById('document_title');
 const documentContents = document.getElementById('editor');
+let visibleFooter = true;
 
 const quill = new Quill('#editor', {
     theme: 'bubble',
-    placeholder: '—'
+    placeholder: '˙˙˙'
 });
 
 quill.on('text-change', function(delta, oldDelta, source) {
     const text = quill.getText();
     wordCountCell.innerText = "Words: " + text.trim().split(" ").length; 
 });
-
-
-// function formatTime() {
-//     const d = new Date();
-//     let hours, minutes, seconds;
-    
-//     if (d.getHours() < 10) {
-//         hours = "0" + d.getHours();
-//     } else {
-//         hours = d.getHours();
-//     }
-    
-//     if (d.getMinutes() < 10) {
-//         minutes = "0" + d.getMinutes();
-//     } else {
-//         minutes = d.getMinutes();
-//     }
-    
-//     if (d.getSeconds() < 10) {
-//         seconds = "0" + d.getSeconds();
-//     } else {
-//         seconds = d.getSeconds();
-//     }
-
-//     // 12 hour clock
-//     if (hours > 12) {
-//         hours = hours % 12;
-//         return hours + ":" + minutes + ":" + seconds + " PM";
-//     } else {
-//         return hours + ":" + minutes + ":" + seconds + " AM";
-//     }
-// }
-
-// function setTime() {
-//     const timeCell = document.getElementById('time');
-//     let time = formatTime();
-//     timeCell.innerHTML = time;
-// }
-
 
 function setTime() {
     const timeCell = document.getElementById('time');
@@ -120,7 +82,6 @@ function readFileContents(file) {
     console.error("Error reading the file:", event.target.error);
   };
 
-  // Read the file as text
   reader.readAsText(file);
 }
 
@@ -131,6 +92,22 @@ document.getElementById("fileInput").addEventListener("change", function(event) 
     readFileContents(file);
   }
 });
+
+
+document.addEventListener('keydown', (event) => {
+    // Check if the pressed keys are Command (Mac) or Control (Windows/Linux) and 'J'
+    if ((event.metaKey || event.ctrlKey) && event.key === 'j') {
+      const footer = document.getElementById('footer');
+      if (visibleFooter) {
+          footer.style.visibility = 'hidden';
+          visibleFooter = false;
+        } else {
+          footer.style.visibility = 'visible';
+          visibleFooter = true;
+      }
+    }
+});
+
 
 setDate();
 setTime();
