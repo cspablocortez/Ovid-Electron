@@ -19,7 +19,7 @@ function setTime() {
     const formatTime = (time) => (time < 10) ? `0${time}` : time;   
     const hour = now.getHours();
     const suffix = hour > 12 ? "PM" : "AM";
-    timeCell.textContent = `${hour % 12}:${formatTime(now.getMinutes())}:${formatTime(now.getSeconds())} ${suffix}`
+    timeCell.textContent = `${formatTime(now.getHours())}:${formatTime(now.getMinutes())}:${formatTime(now.getSeconds())} ${suffix}`
 }
 
 function setDate() {
@@ -111,6 +111,11 @@ document.addEventListener('keydown', (event) => {
     if ((event.metaKey || event.ctrlKey) && event.key === 's') {
         downloadTextAsFile();
     }
+
+    // Open document with Ctrl + O
+    if ((event.metaKey || event.ctrlKey) && event.key === 'o') {
+        document.getElementById('fileInput').click();
+      }
 });
 
 
