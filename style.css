@@ -78,7 +78,7 @@ textarea:focus {
 
 textarea#document_title {
     margin-top: 5%;
-    font-size: 1.75rem;
+    font-size: 1.72rem;
     color: red;
 }
 
@@ -117,7 +117,7 @@ th {
 /* Quill */
 
 #editor {
-    height: 80vh;
+    height: 75vh;
 }
 
 .ql-editor {
