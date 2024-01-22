@@ -1,6 +1,6 @@
 {
   "name": "ovid-electron",
-  "version": "1.0.0",
+  "version": "1.22.24",
   "description": "An Electron version of Ovid Writer",
   "main": "main.js",
   "scripts": {
