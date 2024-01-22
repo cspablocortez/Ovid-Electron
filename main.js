@@ -6,10 +6,14 @@ const createWindow = () => {
   const win = new BrowserWindow({
     width: 970,
     height: 740,
+    icon: path.join(__dirname, 'assets', 'OvidWriterIcon.icns'), // Adjust the path accordingly
     webPreferences: {
         preload: path.join(__dirname, 'preload.js')
     }
   })
+
+  app.dock.setBadge("Ovid Writer");
+  app.dock.setIcon(path.join(__dirname, 'assets', 'OvidWriterIcon.icns'));
 
   win.loadFile('index.html')
 }
