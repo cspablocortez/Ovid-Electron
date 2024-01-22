@@ -106,6 +106,11 @@ document.addEventListener('keydown', (event) => {
           visibleFooter = true;
       }
     }
+
+    // Save document with Ctrl + S
+    if ((event.metaKey || event.ctrlKey) && event.key === 's') {
+        downloadTextAsFile();
+    }
 });
 
 
