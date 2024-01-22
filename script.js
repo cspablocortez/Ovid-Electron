@@ -2,6 +2,7 @@ const wordCountCell = document.getElementById('word_count');
 const documentTitle = document.getElementById('document_title');
 const documentContents = document.getElementById('editor');
 let visibleFooter = true;
+let bottomPadding = 0;
 
 const quill = new Quill('#editor', {
     theme: 'bubble',
@@ -116,6 +117,21 @@ document.addEventListener('keydown', (event) => {
     if ((event.metaKey || event.ctrlKey) && event.key === 'o') {
         document.getElementById('fileInput').click();
       }
+
+    // Move margin up 
+      if ((event.metaKey || event.ctrlKey) && event.key === '/') {
+        const editor = document.getElementById('editor');
+        bottomPadding += 1;
+        editor.style.paddingBottom = `${bottomPadding}rem`;
+      }
+
+      // Move margin down
+      if ((event.metaKey || event.ctrlKey) && event.key === '.') {
+        const editor = document.getElementById('editor');
+        bottomPadding -= 1;
+        editor.style.paddingBottom = `${bottomPadding}rem`;
+      }
+
 });
 
 
