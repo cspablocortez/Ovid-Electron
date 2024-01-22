@@ -4,7 +4,7 @@ const documentContents = document.getElementById('editor');
 
 const quill = new Quill('#editor', {
     theme: 'bubble',
-    placeholder: '~'
+    placeholder: '—'
 });
 
 quill.on('text-change', function(delta, oldDelta, source) {
@@ -13,46 +13,56 @@ quill.on('text-change', function(delta, oldDelta, source) {
 });
 
 
-function formatTime() {
-    const d = new Date();
-    let hours, minutes, seconds;
+// function formatTime() {
+//     const d = new Date();
+//     let hours, minutes, seconds;
     
-    if (d.getHours() < 10) {
-        hours = "0" + d.getHours();
-    } else {
-        hours = d.getHours();
-    }
+//     if (d.getHours() < 10) {
+//         hours = "0" + d.getHours();
+//     } else {
+//         hours = d.getHours();
+//     }
     
-    if (d.getMinutes() < 10) {
-        minutes = "0" + d.getMinutes();
-    } else {
-        minutes = d.getMinutes();
-    }
+//     if (d.getMinutes() < 10) {
+//         minutes = "0" + d.getMinutes();
+//     } else {
+//         minutes = d.getMinutes();
+//     }
     
-    if (d.getSeconds() < 10) {
-        seconds = "0" + d.getSeconds();
-    } else {
-        seconds = d.getSeconds();
-    }
+//     if (d.getSeconds() < 10) {
+//         seconds = "0" + d.getSeconds();
+//     } else {
+//         seconds = d.getSeconds();
+//     }
 
-    // 12 hour clock
-    if (hours > 12) {
-        hours = hours % 12;
-        return hours + ":" + minutes + ":" + seconds + " PM";
-    } else {
-        return hours + ":" + minutes + ":" + seconds + " AM";
-    }
-}
+//     // 12 hour clock
+//     if (hours > 12) {
+//         hours = hours % 12;
+//         return hours + ":" + minutes + ":" + seconds + " PM";
+//     } else {
+//         return hours + ":" + minutes + ":" + seconds + " AM";
+//     }
+// }
+
+// function setTime() {
+//     const timeCell = document.getElementById('time');
+//     let time = formatTime();
+//     timeCell.innerHTML = time;
+// }
+
 
 function setTime() {
     const timeCell = document.getElementById('time');
-    let time = formatTime();
-    timeCell.innerHTML = time;
+    const now = new Date();
+    const formatTime = (time) => (time < 10) ? `0${time}` : time;   
+    const hour = now.getHours();
+    const suffix = hour > 12 ? "PM" : "AM";
+    timeCell.textContent = `${hour % 12}:${formatTime(now.getMinutes())}:${formatTime(now.getSeconds())} ${suffix}`
 }
 
 function setDate() {
-    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const dateCell = document.getElementById('date');
     const d = new Date();
     dateCell.innerHTML = days[d.getDay()] + " " + months[d.getMonth()] + " " + d.getDate();
