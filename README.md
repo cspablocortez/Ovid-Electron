@@ -2,7 +2,7 @@
 
 Ovid Writer is a space for jotting down notes without distractions.
 
-![Screenshot](OW_SSh.png "OW Screenshot")
+![Screenshot](OW_Ssh.png "OW Screenshot")
 
 To download and install:
 
